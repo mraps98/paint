@@ -58,6 +58,7 @@ window.addEventListener("load", () => {
         mouseClicked = true;
         ctx.beginPath();
         ctx.moveTo(e.clientX, e.clientY);
+        alert("touchstart");
     });
 
     document.addEventListener("mouseup", e => {
@@ -65,6 +66,7 @@ window.addEventListener("load", () => {
     });
     document.addEventListener("touchend", e=>{
         mouseClicked = false;
+        alert("touch end");
     });
 
     document.addEventListener("mousemove", e => {
@@ -77,6 +79,7 @@ window.addEventListener("load", () => {
         if (mouseClicked) {
             ctx.lineTo(e.clientX, e.clientY);
             ctx.stroke();
+            alert("touch move");
         }
     });
 
