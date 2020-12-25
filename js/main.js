@@ -17,7 +17,6 @@ window.addEventListener("load", () => {
     main__sizeoptionsInput.value = ctx.lineWidth;
 
     
-
     /* Event listeners for changing colors */
     let main__options = document.querySelectorAll(".main__option");
     main__options.forEach(option => {
@@ -28,7 +27,6 @@ window.addEventListener("load", () => {
             option.classList.add("main__option--selected");
             ctx.strokeStyle = option.getAttribute("data-color");
             ctx.fillStyle = option.getAttribute("data-color");
-            console.log(ctx.strokeStyle);
         })
     });
 
@@ -49,33 +47,33 @@ window.addEventListener("load", () => {
     });
 
     /* Listeners For Mouse and touch */
-    document.addEventListener("mousedown", e => {
+    canvas.addEventListener("mousedown", e => {
         mouseClicked = true;
         ctx.beginPath();
-        ctx.moveTo(e.clientX, e.clientY);
+        ctx.moveTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
     });
-    document.addEventListener("touchstart", e=>{
+    canvas.addEventListener("touchstart", e=>{
         mouseClicked = true;
         ctx.beginPath();
-        ctx.moveTo(e.clientX, e.clientY);
+        ctx.moveTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
     });
 
-    document.addEventListener("mouseup", e => {
+    canvas.addEventListener("mouseup", e => {
         mouseClicked = false;
     });
-    document.addEventListener("touchend", e=>{
+    canvas.addEventListener("touchend", e=>{
         mouseClicked = false;
     });
 
-    document.addEventListener("mousemove", e => {
+    canvas.addEventListener("mousemove", e => {
         if (mouseClicked) {
-            ctx.lineTo(e.clientX, e.clientY);
+            ctx.lineTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
             ctx.stroke();
         }
     });
-    document.addEventListener("touchmove", e=>{
+    canvas.addEventListener("touchmove", e=>{
         if (mouseClicked) {
-            ctx.lineTo(e.clientX, e.clientY);
+            ctx.lineTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
             ctx.stroke();
         }
     });
@@ -83,6 +81,16 @@ window.addEventListener("load", () => {
     /* Listener for resetting */
     let resetButton = document.querySelector(".main__resetoptionsReset");
     resetButton.addEventListener("click", e=>{
-        ctx.clearRect(0, 0, canvas.height, canvas.width);
+        ctx.clearRect(0, 0, canvas.height * 2, canvas.width * 2);
+        ctx.lineWidth = 10;
+        main__sizeoptionsInput.value = ctx.lineWidth;
     });
+
+    let getMousePosition = (canvas, event) => {
+        let rect = canvas.getBoundingClientRect();
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+        }
+    }
 });
