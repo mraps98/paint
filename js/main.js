@@ -66,7 +66,6 @@ window.addEventListener("load", () => {
     });
     document.addEventListener("touchend", e=>{
         mouseClicked = false;
-        alert("touch end");
     });
 
     document.addEventListener("mousemove", e => {
@@ -79,7 +78,6 @@ window.addEventListener("load", () => {
         if (mouseClicked) {
             ctx.lineTo(e.clientX, e.clientY);
             ctx.stroke();
-            alert("touch move");
         }
     });
 
