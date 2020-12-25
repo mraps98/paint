@@ -48,17 +48,32 @@ window.addEventListener("load", () => {
        ctx.lineWidth = e.target.value; 
     });
 
-    /* Listeners For Mouse */
+    /* Listeners For Mouse and touch */
     document.addEventListener("mousedown", e => {
         mouseClicked = true;
         ctx.beginPath();
         ctx.moveTo(e.clientX, e.clientY);
     });
+    document.addEventListener("touchstart", e=>{
+        mouseClicked = true;
+        ctx.beginPath();
+        ctx.moveTo(e.clientX, e.clientY);
+    });
+
     document.addEventListener("mouseup", e => {
         mouseClicked = false;
-
     });
+    document.addEventListener("touchend", e=>{
+        mouseClicked = false;
+    });
+
     document.addEventListener("mousemove", e => {
+        if (mouseClicked) {
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+        }
+    });
+    document.addEventListener("touchmove", e=>{
         if (mouseClicked) {
             ctx.lineTo(e.clientX, e.clientY);
             ctx.stroke();
