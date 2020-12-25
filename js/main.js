@@ -9,6 +9,8 @@ window.addEventListener("load", () => {
     let container = document.querySelector(".container");
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
+    canvas.height = window.innerHeight / 2;
+    canvas.width = canvas.height/ 1.5;
 
     /* Parameters for line*/
     ctx.lineCap = "round";
