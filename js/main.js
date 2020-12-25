@@ -99,4 +99,21 @@ window.addEventListener("load", () => {
             y: event.clientY - rect.top,
         }
     }
+
+    /* Don't scroll while touching */
+    document.body.addEventListener("touchstart", e=>{
+        if(e.target == canvas){
+            e.preventDefault();
+        }
+    });
+    document.body.addEventListener("touchend", e=>{
+        if(e.target == canvas){
+            e.preventDefault();
+        }
+    });
+    document.body.addEventListener("touchmove", e=>{
+        if(e.target == canvas){
+            e.preventDefault();
+        }
+    });
 });
