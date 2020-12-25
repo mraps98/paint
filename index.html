@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header__title">Paint</div>
+        </div>
+        <div class="main">
+            <canvas class="main__canvas" width=300 height=200 ></canvas>
+
+            <div class="main__options">
+                <div class="main__option main__option--selected" data-color="white"></div>
+                <div class="main__option" data-color="violet"></div>
+                <div class="main__option" data-color="indigo"></div>
+                <div class="main__option" data-color="blue"></div>
+                <div class="main__option" data-color="green"></div>
+                <div class="main__option" data-color="yellow"></div>
+                <div class="main__option" data-color="orange"></div>
+                <div class="main__option" data-color="red"></div>
+                <div class="main__option" data-color="black"></div>
+            </div>
+
+            <div class="main__sizeoptions">
+                <div class="main__sizeoptionsButton">-</div>
+                <input type="text" class="main__sizeoptionsInput">
+                <div class="main__sizeoptionsButton">+</div>
+            </div>
+
+            <div class="main__resetoptions">
+                <div class="main__resetoptionsReset">Reset</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

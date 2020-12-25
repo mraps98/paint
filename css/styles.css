@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+}
+body{
+    height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.header__title{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__canvas{
+    border: 1px solid black;
+    margin: 0 10px;
+    background-color: white;
+}
+
+.main__options{
+    display: flex;
+    justify-content: center;
+}
+
+.main__option{
+    margin-top: 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: ease-in 50ms;
+    padding: 10px;
+    border: 1px solid black;
+    margin-right: 5px;
+}
+
+.main__option:hover{
+    transform: scale(1.5);
+}
+
+.main__option:nth-of-type(1){
+    background-color: white;
+}
+.main__option:nth-of-type(2){
+    background-color: violet;
+}
+.main__option:nth-of-type(3){
+    background-color: indigo;
+}
+.main__option:nth-of-type(4){
+    background-color: blue;
+}
+.main__option:nth-of-type(5){
+    background-color: green;
+}
+.main__option:nth-of-type(6){
+    background-color: yellow;
+}
+.main__option:nth-of-type(7){
+    background-color: orange;
+}
+.main__option:nth-of-type(8){
+    background-color: red;
+}
+.main__option:nth-of-type(9){
+    background-color: black;
+    border-color:red !important;
+}
+.main__option--selected{
+    border-width: 2px;
+    box-shadow: 1px 1px 5px 2px;
+}
+
+.main__sizeoptions{
+    display:flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.main__sizeoptionsInput{
+    margin: 0 5px;
+    width: 15px;
+    font-size: 0.7rem;
+}
+
+.main__sizeoptionsButton{
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 999px;
+    background-color: white;
+    transition: ease-in 10ms;
+    cursor:pointer;
+}
+
+.main__sizeoptionsButton:hover{
+    transform: scale(1.2);
+}
+
+.main__resetoptions{
+    margin-top: 5px;
+}
+
+.main__resetoptionsReset{
+    border: 1px solid black;
+    padding: 5px;
+    background-color: white;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: ease-in 40ms;
+}
+.main__resetoptionsReset:hover{
+    transform: scale(1.2);
+}
