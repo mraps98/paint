@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
     let main__sizeoptionsInput = document.querySelector(".main__sizeoptionsInput");
     main__sizeoptionsInput.value = ctx.lineWidth;
 
-    
+
     /* Event listeners for changing colors */
     let main__options = document.querySelectorAll(".main__option");
     main__options.forEach(option => {
@@ -42,8 +42,8 @@ window.addEventListener("load", () => {
         main__sizeoptionsInput.value = ctx.lineWidth;
     });
     let inputSize = document.querySelector(".main__sizeoptionsInput");
-    inputSize.addEventListener("change", e=>{
-       ctx.lineWidth = e.target.value; 
+    inputSize.addEventListener("change", e => {
+        ctx.lineWidth = e.target.value;
     });
 
     /* Listeners For Mouse and touch */
@@ -52,17 +52,21 @@ window.addEventListener("load", () => {
         ctx.beginPath();
         ctx.moveTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
     });
-    canvas.addEventListener("touchstart", e=>{
-        mouseClicked = true;
-        ctx.beginPath();
-        ctx.moveTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
+    canvas.addEventListener("touchstart", e => {
+        let touch = e.touches[0];
+        let mouseevent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY: touch.clientY,
+        });
+        canvas.dispatchEvent(mouseevent);
     });
 
     canvas.addEventListener("mouseup", e => {
         mouseClicked = false;
     });
-    canvas.addEventListener("touchend", e=>{
-        mouseClicked = false;
+    canvas.addEventListener("touchend", e => {
+        let mouseevent = new MouseEvent("mouseup");
+        canvas.dispatchEvent(mouseevent);
     });
 
     canvas.addEventListener("mousemove", e => {
@@ -71,16 +75,18 @@ window.addEventListener("load", () => {
             ctx.stroke();
         }
     });
-    canvas.addEventListener("touchmove", e=>{
-        if (mouseClicked) {
-            ctx.lineTo(getMousePosition(canvas, e).x, getMousePosition(canvas, e).y);
-            ctx.stroke();
-        }
+    canvas.addEventListener("touchmove", e => {
+        let touch = e.touches[0];
+        let mouseevent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY,
+        });
+        canvas.dispatchEvent(mouseevent);
     });
 
     /* Listener for resetting */
     let resetButton = document.querySelector(".main__resetoptionsReset");
-    resetButton.addEventListener("click", e=>{
+    resetButton.addEventListener("click", e => {
         ctx.clearRect(0, 0, canvas.height * 2, canvas.width * 2);
         ctx.lineWidth = 10;
         main__sizeoptionsInput.value = ctx.lineWidth;
