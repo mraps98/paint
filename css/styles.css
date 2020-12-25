@@ -33,6 +33,8 @@ body{
     border: 1px solid black;
     margin: 0 10px;
     background-color: white;
+    object-fit: none;
+    object-position: top left;
 }
 
 .main__options{

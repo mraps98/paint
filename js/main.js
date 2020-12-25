@@ -58,7 +58,6 @@ window.addEventListener("load", () => {
         mouseClicked = true;
         ctx.beginPath();
         ctx.moveTo(e.clientX, e.clientY);
-        alert("touchstart");
     });
 
     document.addEventListener("mouseup", e => {
